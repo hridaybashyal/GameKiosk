@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.cell.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller = "controller.ShowGamesByGenreController"
+      alignment="center" spacing="10"
+      styleClass="root"
+      prefWidth="800"    
+>
+    
+    <HBox alignment = "center_left" spacing = "10">
+        <ImageView>            
+            <image>
+                <Image url = "@game_icon.png"/>
+            </image>
+        </ImageView>
+         
+        <Label text = "Games by Genre" styleClass = "h1"/>
+    </HBox>
+    
+    <HBox spacing = "10" >
+        
+        <VBox spacing = "10" >
+            <Label text = "Genres:" styleClass = "h2" />
+            <ListView items = "${controller.kiosk.catalogue.genres}" fx:id = "genresLv" styleClass = "list-view"/>
+            <Button text = "Display Games" fx:id = "displayGamesBtn" styleClass = "button" onAction="#handleDisplayGames" />
+            
+        </VBox>
+        
+        <VBox spacing = "10">
+            
+            <Label text = "Games:" styleClass = "h2" />
+            
+            <TableView fx:id = "gamesTv" styleClass = "table-view" prefWidth="600">
+                
+                <columns >
+            
+                    <TableColumn text="Title" >
+                
+                        <cellValueFactory>
+                            <PropertyValueFactory property="title" />
+                        </cellValueFactory>
+                
+                    </TableColumn>
+            
+                    <TableColumn text="Year">
+                
+                        <cellValueFactory>
+                            <PropertyValueFactory property="year" />
+                        </cellValueFactory>
+                
+                    </TableColumn>
+            
+                    <TableColumn text="Genre">
+                
+                        <cellValueFactory>
+                            <PropertyValueFactory property="genre" />
+                        </cellValueFactory>
+                
+                    </TableColumn>
+            
+                    <TableColumn text="Price">
+                
+                        <cellValueFactory>
+                            <PropertyValueFactory property="price" />
+                        </cellValueFactory>
+                
+                    </TableColumn>
+            
+                </columns>
+        
+                <placeholder>
+                    <Label text="No games found."/>
+                </placeholder>
+        
+            
+                
+            </TableView> 
+            
+        </VBox>
+    </HBox>
+    
+        
+        
+   
+    <VBox alignment="center">
+        <Button text="Exit" styleClass="button" onAction="#handleExit"  />
+    </VBox>
+
+  
+    <stylesheets>
+        <URL value="@kiosk.css"/>
+    </stylesheets>
+
+</VBox>
